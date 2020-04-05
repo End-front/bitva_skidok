@@ -2,11 +2,6 @@ function ibg(){
 let ibg=document.querySelectorAll(".ibg"); for (var i = 0; i < ibg.length; i++) { if(ibg[i].querySelector('img')){ ibg[i].style.backgroundImage = 'url('+ibg[i].querySelector('img').getAttribute('src')+')'; } }
 }
 ibg();
-function setHeight() {
-  var top__value = ($('.screen-5__intringle').outerHeight()) * 0.40563380281690140845070422535211;
-  $('.screen-5__background').css('top', top__value);
-}
-
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   document.getElementById("contact__phone-1").innerHTML = '<a href="tel:+ 73517506729">+7 (351) 750-67-29</a>';
 	document.getElementById("contact__phone-2").innerHTML = '<a href="tel:+ 73517506729">+7 (351) 750-67-29</a>';
@@ -27,6 +22,15 @@ var scene = document.getElementById('scene');
 var parallaxInstance = new Parallax(scene);
 
 $(document).ready(function() {
+	$(".menu__ul__link a").click(function() {
+    $("html, body").animate({
+      scrollTop: $($(this).attr("href")).offset().top + "px"
+    }, {
+      duration: 750,
+      easing: "swing"
+    });
+    return false;
+  });
 	$('.screen__spoiler__item__title').click(function(event) {
 		if ($('.screen__spoiler').hasClass('spoiler-1')) {
 			$('.screen__spoiler__item__title').not($(this)).removeClass('spoiler__active');
@@ -48,6 +52,4 @@ $(document).ready(function() {
     else {$('.fixed__menu').removeClass('fixed__menu__active')}
 	});
 	$('.paralax-list li').addClass('layer');
-	// setHeight();
-	// $(window).resize(setHeight());
 });
